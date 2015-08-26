@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StoreCollectsDao">
+	<select id="findByUserID" resultType="entity.StoreProducts"
+		parameterType="Map">
+		EXEC [dbo].[SP_Store_findCollectsByUserID]
+		@userID = ${userID},
+		@pageIndex = ${pageIndex},
+		@pageSize = ${pageSize}
+	</select>
+
+	<select id="count" resultType="int" parameterType="int">
+		select
+		count(*) from Store_Collects where userID = #{userID}
+	</select>
+	
+	<insert id="add" parameterType="entity.StoreCollects">
+		INSERT INTO [dbo].[Store_Collects]
+           ([ProductID]
+           ,[UserID])
+     VALUES
+           (#{productID}
+           ,#{userID})
+	</insert>
+	
+	<delete id="del"  parameterType="entity.StoreCollects">
+	DELETE FROM [dbo].[Store_Collects]
+      WHERE userID=#{userID} and productID=#{productID}
+	</delete>
+	
+	<select id="checkCollectStatus" parameterType="entity.StoreCollects" resultType="int">
+	select count(*) FROM [dbo].[Store_Collects]
+      WHERE userID=#{userID} and productID=#{productID}
+	</select>
+
+</mapper>

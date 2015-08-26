@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StoreProductsDao">
+	<select id="findByID" resultType="entity.StoreProducts">
+		SELECT p.*,ptName,pcName,psName,puName,pmcName
+  FROM Store_Products p
+  inner join Store_ProductTypes pt on pt.ptID=p.ptID
+  inner join Store_ProductUnit pu on pu.puID=p.puID
+  inner join Store_ProductColor pc on pc.pcID=p.pcID
+  inner join Store_ProductSpec ps on ps.psID=p.psID
+  inner join Store_PMC pmc on pmc.pmcID=p.pmcID
+   WHERE productID = #{productID}
+	</select>
+
+	<update id="update" parameterType="entity.StoreProducts">
+UPDATE [dbo].[Store_Products]
+   SET [ProductName] = #{productName}
+      ,[ProductImages] = #{productImages}
+      ,[ProductPrice] = #{productPrice}
+      ,[ProductRealityPrice] = #{productRealityPrice}
+      ,[PTID] = #{ptID}
+      ,[PUID] = #{puID}
+      ,[PCID] = #{pcID}
+      ,[PSID] = #{psID}
+      ,[ProductStock] = #{productStock}
+      ,[ProductDesc] = #{productDesc}
+      ,[ProductState] = #{productState}
+ WHERE productID = #{productID}
+	</update>
+	
+	<insert id="add" parameterType="entity.StoreProducts">
+INSERT INTO [dbo].[Store_Products]
+           ([ProductID]
+           ,[ProductName]
+           ,[ProductImages]
+           ,[ProductPrice]
+           ,[ProductRealityPrice]
+           ,[PTID]
+           ,[PUID]
+           ,[PCID]
+           ,[PSID]
+           ,[ProductStock]
+           ,[ProductSaleCount]
+           ,[ProductDesc]
+           ,[PMCID]
+           ,[ProductDate]
+           ,[ProductState])
+     VALUES
+           (#{productID}
+           ,#{productName}
+           ,#{productImages}
+           ,#{productPrice}
+           ,#{productRealityPrice}
+           ,#{ptID}
+           ,#{puID}
+           ,#{pcID}
+           ,#{psID}
+           ,#{productStock}
+           ,#{productSaleCount}
+           ,#{productDesc}
+           ,#{pmcID}
+           ,#{productDate}
+           ,#{productState})
+	</insert>
+	
+	
+	<select id="find" resultType="entity.StoreProducts"  parameterType="Map">
+EXEC dbo.SP_GetRecordByPage 
+@tblName = 'Store_Products',
+@fldName = 
+	${storeProducts.order}
+,
+@PageSize = ${pageSize},
+@PageIndex = ${pageIndex},
+@IsReCount = 0,
+@OrderType = 
+	${storeProducts.desc}
+,
+@strWhere = '1=1 
+			<if test="storeProducts.productName!=null and storeProducts.productName!=''">
+				AND ProductName like ''%${storeProducts.productName,jdbcType=NVARCHAR}%'' 
+			</if>
+			<if test="storeProducts.ptID!=0">
+				AND PTID = ${storeProducts.ptID} 
+			</if>
+			<if test="storeProducts.pmcID!=0">
+				AND PMCID = ${storeProducts.pmcID} 
+			</if>
+				AND productState = 1 
+		'
+	</select>
+	
+		<select id="count" resultType="int"  parameterType="entity.StoreProducts">
+EXEC [SP_GetCount] 
+@tblName = 'Store_Products',
+@strWhere = '1=1 
+			<if test="productName!=null and productName!=''">
+				AND ProductName like ''%${productName,jdbcType=NVARCHAR}%'' 
+			</if>
+			<if test="ptID!=0">
+				AND PTID = ${ptID} 
+			</if>
+			<if test="pmcID!=0">
+				AND PMCID = ${pmcID} 
+			</if>
+				AND productState = 1 
+		'
+	</select>
+	
+	
+	<select id="findTypeInProductsByPMCID" resultType="java.lang.Integer" parameterType="int">
+		EXEC [dbo].[SP_Store_findTypeInProductsByPMCID]
+		@pmcID = #{pmcID}
+	</select>
+
+</mapper>
