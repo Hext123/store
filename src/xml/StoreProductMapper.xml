@@ -78,7 +78,7 @@ EXEC dbo.SP_GetRecordByPage
 ,
 @strWhere = '1=1 
 			<if test="storeProducts.productName!=null and storeProducts.productName!=''">
-				AND ProductName like ''%${storeProducts.productName,jdbcType=NVARCHAR}%'' 
+				AND ProductName like ''%${storeProducts.productName}%'' 
 			</if>
 			<if test="storeProducts.ptID!=0">
 				AND PTID = ${storeProducts.ptID} 
@@ -95,7 +95,7 @@ EXEC [SP_GetCount]
 @tblName = 'Store_Products',
 @strWhere = '1=1 
 			<if test="productName!=null and productName!=''">
-				AND ProductName like ''%${productName,jdbcType=NVARCHAR}%'' 
+				AND ProductName like ''%${productName}%'' 
 			</if>
 			<if test="ptID!=0">
 				AND PTID = ${ptID} 

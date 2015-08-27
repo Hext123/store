@@ -144,7 +144,7 @@ public class StoreProductController {
 			map.put("qz", "SP");
 			String id = commonService.getID(map);
 			storeProducts.setProductID(id);
-			storeProducts.setProductImages(productImages.toString());
+			storeProducts.setProductImages(stringRidComma(productImages));
 			storeProducts.setProductDate(new Date());
 			storeProducts.setProductState(NormalProductState);
 			storeProducts.setPmcID(defaultPMCID);
@@ -180,7 +180,6 @@ public class StoreProductController {
 						+ files[i].getOriginalFilename());
 
 				if (!files[i].isEmpty()) {
-					int pre = (int) System.currentTimeMillis();
 
 					String fileName = "SP"
 							+ sdf.format(new Date())
@@ -194,26 +193,23 @@ public class StoreProductController {
 
 					fileName = path + fileName;
 
-					FileOutputStream os = new FileOutputStream(fileName);
-					// 拿到上传文件的输入流
-					FileInputStream in = (FileInputStream) files[i]
-							.getInputStream();
-
-					// 以写字节的方式写文件
-					int b = 0;
-					while ((b = in.read()) != -1) {
-						os.write(b);
-					}
-					os.flush();
-					os.close();
-					in.close();
-					int finaltime = (int) System.currentTimeMillis();
-					System.out.println(finaltime - pre);
+					File file = new File(fileName);
+					
+					
+					files[i].transferTo(file);
 
 				}
 			}
 		}
 		return sb;
+	}
+
+	String stringRidComma(StringBuffer sb) {
+		String imgs = sb.toString();
+		if (imgs.charAt(imgs.length() - 1) == ',') {
+			imgs = imgs.substring(0, imgs.length() - 1);
+		}
+		return imgs;
 	}
 
 	/**
@@ -295,7 +291,7 @@ public class StoreProductController {
 				productImages.append(",");
 			}
 
-			storeProducts.setProductImages(productImages.toString());
+			storeProducts.setProductImages(stringRidComma(productImages));
 
 			storeProducts.setProductState(NormalProductState);
 			int n = storeProductsService.update(storeProducts);
@@ -349,10 +345,6 @@ public class StoreProductController {
 	public String getStoreProductByID(String id) {
 
 		StoreProducts storeProducts = storeProductsService.findByID(id);
-		String imgs = storeProducts.getProductImages();
-		if (imgs.charAt(imgs.length() - 1) == ',') {
-			imgs = imgs.substring(0, imgs.length() - 1);
-		}
 		return JSON.toJSONString(storeProducts);
 	}
 

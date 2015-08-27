@@ -47,7 +47,7 @@ public class StoreCollectsController {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		map.put("count", count);
-		map.put("StoreProducts", StoreProducts);
+		map.put("storeProducts", StoreProducts);
 
 		return JSON.toJSONString(map);
 
