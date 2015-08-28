@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StoreShopCarDao">
+	<select id="findByUserID" resultType="entity.StoreShopCar"
+		parameterType="Map">
+		EXEC [dbo].[SP_Store_findShopCarByUserID]
+		@userID =
+		${userID},
+		@pageIndex = ${pageIndex},
+		@pageSize = ${pageSize}
+	</select>
+
+	<select id="add" parameterType="entity.StoreShopCar">
+		EXEC
+		[dbo].[SP_Store_addStoreShopCar]
+		@UserID = #{userID},
+		@ProductID =
+		#{productID}
+	</select>
+
+	<select id="del" parameterType="entity.StoreCollects">
+		EXEC
+		[dbo].[SP_Store_delStoreShopCar]
+		@UserID = #{userID},
+		@ProductID =
+		#{productID}
+	</select>
+
+	<select id="update" parameterType="entity.StoreCollects">
+		EXEC
+		[dbo].[SP_Store_updateStoreShopCar]
+		@UserID = #{userID},
+		@ProductID =
+		#{productID},
+		@BayCount =#{bayCount}
+	</select>
+
+</mapper>
