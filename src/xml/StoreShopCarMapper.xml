@@ -41,5 +41,15 @@
 		[dbo].[SP_Store_findShopCarCountByUserID]
 		@UserID = #{userID}
 	</select>
+	
+	<select id="updateShopCarSelected" resultType="int" parameterType="String">
+	EXEC [dbo].[SP_Store_Update_ShopCar_Selected]
+ 	@shopCarID = #{shopCarID}
+	</select>
+	
+	<select id="updateShopCarNotSelectedAll" parameterType="int">
+	EXEC [dbo].[SP_Store_Update_ShopCar_NotSelected_All]
+ 	@userID = #{userID}
+	</select>
 
 </mapper>

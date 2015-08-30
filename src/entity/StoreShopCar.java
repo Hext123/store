@@ -5,6 +5,7 @@ public class StoreShopCar {
 	String productID;
 	int bayCount;
 	int userID;
+	boolean isSelected;
 
 	public String getShopCarID() {
 		return shopCarID;
@@ -36,6 +37,14 @@ public class StoreShopCar {
 
 	public void setUserID(int userID) {
 		this.userID = userID;
+	}
+
+	public boolean getIsSelected() {
+		return isSelected;
+	}
+
+	public void setIsSelected(boolean isSelected) {
+		this.isSelected = isSelected;
 	}
 
 	@Override

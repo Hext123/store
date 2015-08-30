@@ -42,4 +42,8 @@ public class StoreAddressServiceImpl implements StoreAddressService {
 		storeAddressDao.updateAddressDefault(storeAddress);
 	}
 
+	public StoreAddress findDefaultAddressByUserID(int userID) {
+		return storeAddressDao.findDefaultAddressByUserID(userID);
+	}
+
 }

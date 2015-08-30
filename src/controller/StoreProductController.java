@@ -353,6 +353,9 @@ public class StoreProductController {
 	public String findStoreProductList(
 			@ModelAttribute StoreProducts storeProducts, int pageIndex,
 			int pageSize) {
+		
+		System.out.println("================="+storeProducts);
+		
 		if (storeProducts.getOrder() == null
 				|| storeProducts.getOrder().equals("")) {
 			storeProducts.setOrder("ProductDate");

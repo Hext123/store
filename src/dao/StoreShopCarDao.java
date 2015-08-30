@@ -11,12 +11,14 @@ public interface StoreShopCarDao {
 
 	void del(StoreShopCar storeShopCar);
 
-
 	int count(int userID);
-	
+
 	void update(StoreShopCar storeShopCar);
 
-	List<StoreProducts> findByUserID(
-			@Param("userID") int userID,
+	List<StoreProducts> findByUserID(@Param("userID") int userID,
 			@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);
+
+	int updateShopCarSelected(String shopCarID);
+
+	void updateShopCarNotSelectedAll(int userID);
 }

@@ -6,7 +6,21 @@
 	</select>
 
 
-	<select id="add" parameterType="entity.StoreOrders" resultType="String">
+	<select id="addOrderSimple" parameterType="Map" resultType="String">
+EXEC [dbo].[SP_Store_addOrder_simple]
+	@userID = #{o.userID},
+	@orderConsignee = #{o.orderConsignee},
+	@orderAddress = #{o.orderAddress},
+	@orderTelephone = #{o.orderTelephone},
+	@rderSumPrice = #{o.rderSumPrice},
+	@orderDesc = #{o.orderDesc},
+	@pmcID = #{o.pmcID},
+	@productID = #{productID},
+	@buyCount = #{buyCount}
+	</select>
+	
+		<select id="addOrder" parameterType="entity.StoreOrders" resultType="String">
+
 EXEC [dbo].[SP_Store_addOrder] 
 	@userID = #{userID},
 	@orderConsignee = #{orderConsignee},
@@ -16,5 +30,6 @@ EXEC [dbo].[SP_Store_addOrder]
 	@orderDesc = #{orderDesc},
 	@pmcID = #{pmcID}
 	</select>
+	
 
 </mapper>

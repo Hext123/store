@@ -14,4 +14,7 @@ public interface StoreAddressDao {
 	void updateAddressDefault(StoreAddress storeAddress);
 
 	List<StoreAddress> findByUserID(int userID);
+
+	StoreAddress findDefaultAddressByUserID(int userID);
+
 }

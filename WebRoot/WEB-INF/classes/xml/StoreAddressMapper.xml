@@ -5,7 +5,15 @@
 		parameterType="int">
 
 		EXEC [dbo].[SP_Store_findAddressByUserID]
-		@userID = #{userID}
+		@userID =
+		#{userID}
+	</select>
+	<select id="findDefaultAddressByUserID" resultType="entity.StoreAddress"
+		parameterType="int">
+
+		EXEC [dbo].[SP_Store_findDefaultAddressByUserID]
+		@userID
+		= #{userID}
 	</select>
 
 	<select id="add" parameterType="entity.StoreAddress">
@@ -24,7 +32,8 @@
 	</select>
 
 	<select id="update" parameterType="entity.StoreAddress">
-		EXEC [dbo].[SP_Store_updateAddress]
+		EXEC
+		[dbo].[SP_Store_updateAddress]
 		@addressID = #{addressID},
 		@provinceCityDistrict = #{provinceCityDistrict},
 		@addressDetail =
@@ -34,10 +43,11 @@
 	</select>
 
 	<select id="updateAddressDefault" parameterType="entity.StoreAddress">
-		EXEC [dbo].[SP_Store_updateAddressDefault]
+		EXEC
+		[dbo].[SP_Store_updateAddressDefault]
 		@addressID = #{addressID},
-		@userID = #{userID}
-		@isDefalut = #{isDefalut}
+		@userID = #{userID},
+		@isDefault = #{isDefault,jdbcType=BIT}
 		
 	</select>
 

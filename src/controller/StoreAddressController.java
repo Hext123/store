@@ -49,10 +49,10 @@ public class StoreAddressController {
 	public String updateAddressDefault(StoreAddress storeAddress) {
 		try {
 			storeAddressService.updateAddressDefault(storeAddress);
-			return JSON.toJSONString(new Message("修改成功", 1));
+			return JSON.toJSONString(new Message("设置成功", 1));
 		} catch (Exception e) {
 			e.printStackTrace();
-			return JSON.toJSONString(new Message("修改失败", 0));
+			return JSON.toJSONString(new Message("设置失败", 0));
 		}
 	}
 
@@ -74,6 +74,15 @@ public class StoreAddressController {
 		List<StoreAddress> storeAddresses = storeAddressService
 				.findByUserID(userID);
 		return JSON.toJSONString(storeAddresses);
+
+	}
+
+	@RequestMapping(value = "/findDefaultAddressByUserID", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String findDefaultAddressByUserID(int userID) {
+		StoreAddress storeAddress = storeAddressService
+				.findDefaultAddressByUserID(userID);
+		return JSON.toJSONString(storeAddress);
 
 	}
 }
