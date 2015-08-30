@@ -7,6 +7,7 @@ public class StoreAddress {
 	private String consignee;
 	private String telephone;
 	private int userID;
+	private boolean isDefault;
 
 	public int getAddressID() {
 		return addressID;
@@ -56,12 +57,12 @@ public class StoreAddress {
 		this.userID = userID;
 	}
 
-	@Override
-	public String toString() {
-		return "StoreAddress [addressDetail=" + addressDetail + ", addressID="
-				+ addressID + ", consignee=" + consignee
-				+ ", provinceCityDistrict=" + provinceCityDistrict
-				+ ", telephone=" + telephone + ", userID=" + userID + "]";
+	public boolean isDefault() {
+		return isDefault;
+	}
+
+	public void setDefault(boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 }

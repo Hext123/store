@@ -49,7 +49,6 @@
 					豪管家商城管理中心 > 添加商品
 				</div>
 				<div class="" align="right">
-					<input type="button" value="导入数据">
 				</div>
 				<div id="" class="" align="center">
 					添加商品

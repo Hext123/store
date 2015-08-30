@@ -38,4 +38,8 @@ public class StoreAddressServiceImpl implements StoreAddressService {
 
 	}
 
+	public void updateAddressDefault(StoreAddress storeAddress) {
+		storeAddressDao.updateAddressDefault(storeAddress);
+	}
+
 }

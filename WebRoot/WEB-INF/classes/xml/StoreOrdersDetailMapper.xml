@@ -5,4 +5,14 @@
 		SELECT * FROM Store_OrderDetail where orderID = orderID
 	</select>
 
+	<select id="add"  parameterType="entity.StoreOrders" >
+exec [dbo].[SP_Store_addOrderDetail]
+@orderID = #{orderID},
+@productID = #{productID},
+@productPrice = #{productPrice},
+@buyCount = #{buyCount},
+@userID = #{userID}
+	</select>
+	
+
 </mapper>

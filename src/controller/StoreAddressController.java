@@ -44,6 +44,18 @@ public class StoreAddressController {
 		}
 	}
 
+	@RequestMapping(value = "/updateAddressDefault", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String updateAddressDefault(StoreAddress storeAddress) {
+		try {
+			storeAddressService.updateAddressDefault(storeAddress);
+			return JSON.toJSONString(new Message("修改成功", 1));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JSON.toJSONString(new Message("修改失败", 0));
+		}
+	}
+
 	@RequestMapping(value = "/delStoreAddress", produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String delStoreAddress(int addressID) {

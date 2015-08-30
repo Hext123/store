@@ -5,4 +5,16 @@
 		SELECT * FROM Store_Orders
 	</select>
 
+
+	<select id="add" parameterType="entity.StoreOrders" resultType="String">
+EXEC [dbo].[SP_Store_addOrder] 
+	@userID = #{userID},
+	@orderConsignee = #{orderConsignee},
+	@orderAddress = #{orderAddress},
+	@orderTelephone = #{orderTelephone},
+	@rderSumPrice = #{rderSumPrice},
+	@orderDesc = #{orderDesc},
+	@pmcID = #{pmcID}
+	</select>
+
 </mapper>

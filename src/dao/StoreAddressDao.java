@@ -11,5 +11,7 @@ public interface StoreAddressDao {
 
 	void del(int addressID);
 
+	void updateAddressDefault(StoreAddress storeAddress);
+
 	List<StoreAddress> findByUserID(int userID);
 }

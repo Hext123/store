@@ -10,27 +10,27 @@
 	</select>
 
 	<select id="count" resultType="int" parameterType="int">
-		select
-		count(*) from Store_Collects where userID = #{userID}
+		exec SP_Store_findCollectsCountByUserID
+		 @userID = #{userID}
 	</select>
 	
 	<insert id="add" parameterType="entity.StoreCollects">
-		INSERT INTO [dbo].[Store_Collects]
-           ([ProductID]
-           ,[UserID])
-     VALUES
-           (#{productID}
-           ,#{userID})
+	exec [SP_Store_addCollects]
+	@productID = #{productID},
+	@userID = #{userID}
+
 	</insert>
 	
 	<delete id="del"  parameterType="entity.StoreCollects">
-	DELETE FROM [dbo].[Store_Collects]
-      WHERE userID=#{userID} and productID=#{productID}
+	exec [SP_Store_delCollects]
+	@productID = #{productID},
+	@userID = #{userID}
 	</delete>
 	
 	<select id="checkCollectStatus" parameterType="entity.StoreCollects" resultType="int">
-	select count(*) FROM [dbo].[Store_Collects]
-      WHERE userID=#{userID} and productID=#{productID}
+	exec [SP_Store_checkCollectStatus]
+	@productID = #{productID},
+	@userID = #{userID}
 	</select>
 
 </mapper>

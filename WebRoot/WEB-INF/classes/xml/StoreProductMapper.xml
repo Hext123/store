@@ -66,7 +66,7 @@ INSERT INTO [dbo].[Store_Products]
 	
 	<select id="find" resultType="entity.StoreProducts"  parameterType="Map">
 	EXEC [dbo].[SP_Store_findProducts]
-		@productName = #{storeProducts.productName},
+		@productName = #{storeProducts.productName,jdbcType=NVARCHAR},
 		@ptID = #{storeProducts.ptID},
 		@pmcID = #{storeProducts.pmcID},
 		@productState = 1,
@@ -82,7 +82,7 @@ EXEC [dbo].[SP_Store_findProductsCount]
 		@ptID = #{ptID},
 		@pmcID = #{pmcID},
 		@productState = 1,
-		@productName = #{productName}
+		@productName = #{productName,jdbcType=NVARCHAR}
 	</select>
 	
 	

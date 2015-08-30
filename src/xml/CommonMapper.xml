@@ -4,8 +4,5 @@
 	<select id="getID" resultType="String" parameterType="Map">
 		exec [SP_Store_getID] #{tbName},#{keyName},#{qz}
 	</select>
-	
-	<insert id="addT" parameterType="entity.T">
-	insert into t values(#{name},#{js})
-	</insert>
+
 </mapper>

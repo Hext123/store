@@ -4,31 +4,41 @@
 	<select id="findByUserID" resultType="entity.StoreAddress"
 		parameterType="int">
 
-EXEC [dbo].[SP_Store_findAddressByUserID]
+		EXEC [dbo].[SP_Store_findAddressByUserID]
 		@userID = #{userID}
 	</select>
 
 	<select id="add" parameterType="entity.StoreAddress">
 		EXEC [dbo].[SP_Store_addAddress]
 		@provinceCityDistrict = #{provinceCityDistrict},
-		@addressDetail = #{addressDetail},
+		@addressDetail =
+		#{addressDetail},
 		@consignee = #{consignee},
 		@telephone = #{telephone},
 		@userID = #{userID}
 	</select>
 
 	<select id="del" parameterType="int">
-EXEC [dbo].[SP_Store_delAddress]
+		EXEC [dbo].[SP_Store_delAddress]
 		@addressID = #{addressID}
 	</select>
 
 	<select id="update" parameterType="entity.StoreAddress">
-EXEC [dbo].[SP_Store_updateAddress]
+		EXEC [dbo].[SP_Store_updateAddress]
 		@addressID = #{addressID},
 		@provinceCityDistrict = #{provinceCityDistrict},
-		@addressDetail = #{addressDetail},
+		@addressDetail =
+		#{addressDetail},
 		@consignee = #{consignee},
 		@telephone = #{telephone}
+	</select>
+
+	<select id="updateAddressDefault" parameterType="entity.StoreAddress">
+		EXEC [dbo].[SP_Store_updateAddressDefault]
+		@addressID = #{addressID},
+		@userID = #{userID}
+		@isDefalut = #{isDefalut}
+		
 	</select>
 
 </mapper>

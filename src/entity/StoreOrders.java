@@ -12,7 +12,7 @@ public class StoreOrders {
 	private double orderSumPrice;
 	private int orderState;
 	private String orderDesc;
-	private int cID;
+	private int pmcID;
 
 	public String getOrderID() {
 		return orderID;
@@ -86,22 +86,13 @@ public class StoreOrders {
 		this.orderDesc = orderDesc;
 	}
 
-	public int getcID() {
-		return cID;
+	public int getPmcID() {
+		return pmcID;
 	}
 
-	public void setcID(int cID) {
-		this.cID = cID;
+	public void setPmcID(int pmcID) {
+		this.pmcID = pmcID;
 	}
 
-	@Override
-	public String toString() {
-		return "StoreOrders [cID=" + cID + ", orderAddress=" + orderAddress
-				+ ", orderConsignee=" + orderConsignee + ", orderDate="
-				+ orderDate + ", orderDesc=" + orderDesc + ", orderID="
-				+ orderID + ", orderState=" + orderState + ", orderSumPrice="
-				+ orderSumPrice + ", orderTelephone=" + orderTelephone
-				+ ", userID=" + userID + "]";
-	}
-
+	
 }
