@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import dao.StoreShopCarDao;
 
+import entity.StoreProducts;
 import entity.StoreShopCar;
 import service.StoreShopCarService;
 
@@ -30,9 +31,13 @@ public class StoreShopCarServiceImpl implements StoreShopCarService {
 
 	}
 
-	public List<StoreShopCar> findByUserID(int userID, int pageIndex,
+	public List<StoreProducts> findByUserID(int userID, int pageIndex,
 			int pageSize) {
 		return storeShopCarDao.findByUserID(userID, pageIndex, pageSize);
+	}
+
+	public int count(int userID) {
+		return storeShopCarDao.count(userID);
 	}
 
 }

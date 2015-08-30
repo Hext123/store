@@ -22,7 +22,6 @@ public class StoreProducts {
 	private int productStock;
 	private String productDesc;
 	private int pmcID;
-
 	private Date productDate;
 	private int productState;
 	
@@ -36,6 +35,9 @@ public class StoreProducts {
 
 	private String order;
 	private int desc;
+
+	private String bayCount;
+	private String shopCarID;
 
 	public String getOrder() {
 		return order;
@@ -51,6 +53,18 @@ public class StoreProducts {
 	}
 	
 	
+	public String getShopCarID() {
+		return shopCarID;
+	}
+	public void setShopCarID(String shopCarID) {
+		this.shopCarID = shopCarID;
+	}
+	public String getBayCount() {
+		return bayCount;
+	}
+	public void setBayCount(String bayCount) {
+		this.bayCount = bayCount;
+	}
 	public Date getProductDate() {
 		return productDate;
 	}
@@ -173,20 +187,11 @@ public class StoreProducts {
 	public void setPmcName(String pmcName) {
 		this.pmcName = pmcName;
 	}
-	@Override
-	public String toString() {
-		return "StoreProducts [desc=" + desc + ", order=" + order + ", pcID="
-				+ pcID + ", pcName=" + pcName + ", pmcID=" + pmcID
-				+ ", pmcName=" + pmcName + ", productDate=" + productDate
-				+ ", productDesc=" + productDesc + ", productID=" + productID
-				+ ", productImages=" + productImages + ", productName="
-				+ productName + ", productPrice=" + productPrice
-				+ ", productRealityPrice=" + productRealityPrice
-				+ ", productSaleCount=" + productSaleCount + ", productState="
-				+ productState + ", productStock=" + productStock + ", psID="
-				+ psID + ", psName=" + psName + ", ptID=" + ptID + ", ptName="
-				+ ptName + ", puID=" + puID + ", puName=" + puName + "]";
-	}
+
+	
+	
+	
+	
 	public StoreProducts() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -200,6 +205,22 @@ public class StoreProducts {
 		this.productState = productState;
 		this.order = order;
 		this.desc = desc;
+	}
+	@Override
+	public String toString() {
+		return "StoreProducts [bayCount=" + bayCount + ", desc=" + desc
+				+ ", order=" + order + ", pcID=" + pcID + ", pcName=" + pcName
+				+ ", pmcID=" + pmcID + ", pmcName=" + pmcName
+				+ ", productDate=" + productDate + ", productDesc="
+				+ productDesc + ", productID=" + productID + ", productImages="
+				+ productImages + ", productName=" + productName
+				+ ", productPrice=" + productPrice + ", productRealityPrice="
+				+ productRealityPrice + ", productSaleCount="
+				+ productSaleCount + ", productState=" + productState
+				+ ", productStock=" + productStock + ", psID=" + psID
+				+ ", psName=" + psName + ", ptID=" + ptID + ", ptName="
+				+ ptName + ", puID=" + puID + ", puName=" + puName
+				+ ", shopCarID=" + shopCarID + "]";
 	}
 	
 

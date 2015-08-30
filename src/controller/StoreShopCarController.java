@@ -1,6 +1,8 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 
 import entity.Message;
+import entity.StoreProducts;
 import entity.StoreShopCar;
 
 import service.StoreShopCarService;
@@ -60,9 +63,20 @@ public class StoreShopCarController {
 	@ResponseBody
 	public String findShopCarByUserID(int userID, int pageIndex, int pageSize) {
 
-		List<StoreShopCar> storeShopCars = storeShopCarService.findByUserID(
+		List<StoreProducts> storeProducts = storeShopCarService.findByUserID(
 				userID, pageIndex, pageSize);
-		return JSON.toJSONString(storeShopCars);
+		return JSON.toJSONString(storeProducts);
+
+	}
+
+	@RequestMapping(value = "/findShopCarCountByUserID", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String findShopCarCountByUserID(int userID) {
+
+		int count = storeShopCarService.count(userID);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("count", count);
+		return JSON.toJSONString(map);
 
 	}
 }

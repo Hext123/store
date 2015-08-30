@@ -65,46 +65,24 @@ INSERT INTO [dbo].[Store_Products]
 	
 	
 	<select id="find" resultType="entity.StoreProducts"  parameterType="Map">
-EXEC dbo.SP_GetRecordByPage 
-@tblName = 'Store_Products',
-@fldName = 
-	${storeProducts.order}
-,
-@PageSize = ${pageSize},
-@PageIndex = ${pageIndex},
-@IsReCount = 0,
-@OrderType = 
-	${storeProducts.desc}
-,
-@strWhere = '1=1 
-			<if test="storeProducts.productName!=null and storeProducts.productName!=''">
-				AND ProductName like ''%${storeProducts.productName}%'' 
-			</if>
-			<if test="storeProducts.ptID!=0">
-				AND PTID = ${storeProducts.ptID} 
-			</if>
-			<if test="storeProducts.pmcID!=0">
-				AND PMCID = ${storeProducts.pmcID} 
-			</if>
-				AND productState = 1 
-		'
+	EXEC [dbo].[SP_Store_findProducts]
+		@productName = #{storeProducts.productName},
+		@ptID = #{storeProducts.ptID},
+		@pmcID = #{storeProducts.pmcID},
+		@productState = 1,
+		@order = #{storeProducts.order},
+		@desc = #{storeProducts.desc},
+		@pageSize = #{pageSize},
+		@pageIndex = #{pageIndex}
+
 	</select>
 	
 		<select id="count" resultType="int"  parameterType="entity.StoreProducts">
-EXEC [SP_GetCount] 
-@tblName = 'Store_Products',
-@strWhere = '1=1 
-			<if test="productName!=null and productName!=''">
-				AND ProductName like ''%${productName}%'' 
-			</if>
-			<if test="ptID!=0">
-				AND PTID = ${ptID} 
-			</if>
-			<if test="pmcID!=0">
-				AND PMCID = ${pmcID} 
-			</if>
-				AND productState = 1 
-		'
+EXEC [dbo].[SP_Store_findProductsCount]
+		@ptID = #{ptID},
+		@pmcID = #{pmcID},
+		@productState = 1,
+		@productName = #{productName}
 	</select>
 	
 	

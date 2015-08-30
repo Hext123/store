@@ -3,8 +3,8 @@
 <mapper namespace="dao.StoreProductTypesDao" >
 	<select id="find" resultType="entity.StoreProductTypes" parameterType="entity.StoreProductTypes">
 		EXEC [dbo].[SP_Store_findTypesByPMCIDAndParentID]
-		@pmcID = ${pmcID},
-		@ParentID = ${ptParentID}
+		@pmcID = #{pmcID},
+		@ParentID = #{ptParentID}
 	</select>
 	
 </mapper>

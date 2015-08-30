@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+import entity.StoreProducts;
 import entity.StoreShopCar;
 
 public interface StoreShopCarService {
@@ -11,5 +12,6 @@ public interface StoreShopCarService {
 
 	void update(StoreShopCar storeShopCar);
 
-	List<StoreShopCar> findByUserID(int userID, int pageIndex, int pageSize);
+	int count(int userID);
+	List<StoreProducts> findByUserID(int userID, int pageIndex, int pageSize);
 }

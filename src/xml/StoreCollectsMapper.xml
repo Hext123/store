@@ -4,9 +4,9 @@
 	<select id="findByUserID" resultType="entity.StoreProducts"
 		parameterType="Map">
 		EXEC [dbo].[SP_Store_findCollectsByUserID]
-		@userID = ${userID},
-		@pageIndex = ${pageIndex},
-		@pageSize = ${pageSize}
+		@userID = #{userID},
+		@pageIndex = #{pageIndex},
+		@pageSize = #{pageSize}
 	</select>
 
 	<select id="count" resultType="int" parameterType="int">

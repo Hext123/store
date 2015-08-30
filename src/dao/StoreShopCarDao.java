@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+import entity.StoreProducts;
 import entity.StoreShopCar;
 
 public interface StoreShopCarDao {
@@ -10,9 +11,12 @@ public interface StoreShopCarDao {
 
 	void del(StoreShopCar storeShopCar);
 
+
+	int count(int userID);
+	
 	void update(StoreShopCar storeShopCar);
 
-	List<StoreShopCar> findByUserID(
+	List<StoreProducts> findByUserID(
 			@Param("userID") int userID,
 			@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);
 }
