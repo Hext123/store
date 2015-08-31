@@ -9,6 +9,7 @@ public class StoreOrders {
 	private String orderConsignee;
 	private String orderAddress;
 	private String orderTelephone;
+	private double orderFreight;
 	private double orderSumPrice;
 	private int orderState;
 	private String orderDesc;
@@ -94,5 +95,12 @@ public class StoreOrders {
 		this.pmcID = pmcID;
 	}
 
-	
+	public double getOrderFreight() {
+		return orderFreight;
+	}
+
+	public void setOrderFreight(double orderFreight) {
+		this.orderFreight = orderFreight;
+	}
+
 }

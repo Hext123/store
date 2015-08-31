@@ -28,6 +28,7 @@ public class StoreOrdersController {
 		try {
 			String orderID = storeOrdersService.addOrderSimple(storeOrders,
 					productID, buyCount);
+
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("message", new Message("生成订单成功", 1));
 			map.put("orderID", orderID);
@@ -47,9 +48,11 @@ public class StoreOrdersController {
 		try {
 			String orderID = storeOrdersService
 					.addOrder(storeOrders, shopCarID);
+
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("message", new Message("生成订单成功", 1));
 			map.put("orderID", orderID);
+
 			return JSON.toJSONString(map);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,6 +60,21 @@ public class StoreOrdersController {
 			map.put("message", new Message("生成订单失败", 0));
 			map.put("orderID", "");
 			return JSON.toJSONString(map);
+		}
+	}
+
+	@RequestMapping(value = "/updateOrderState", produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String updateOrderState(StoreOrders storeOrders) {
+		try {
+			int n = storeOrdersService.updateOrderState(storeOrders);
+			if (n == 0) {
+				throw new Exception("修改订单状态失败");
+			}
+			return JSON.toJSONString(new Message("修改订单状态成功", 1));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JSON.toJSONString(new Message("修改订单状态失败", 0));
 		}
 	}
 }

@@ -31,12 +31,17 @@ public class StoreOrdersServiceImpl implements StoreOrdersService {
 			}
 		}
 		String orderID = storeOrdersDao.addOrder(storeOrders);
+
 		return orderID;
 	}
 
 	public String addOrderSimple(StoreOrders storeOrders, String productID,
 			int buyCount) {
 		return storeOrdersDao.addOrderSimple(storeOrders, productID, buyCount);
+	}
+
+	public int updateOrderState(StoreOrders storeOrders) {
+		return storeOrdersDao.updateOrderState(storeOrders);
 	}
 
 }

@@ -14,18 +14,18 @@
 		 @userID = #{userID}
 	</select>
 	
-	<insert id="add" parameterType="entity.StoreCollects">
+	<select id="add" parameterType="entity.StoreCollects" resultType="int">
 	exec [SP_Store_addCollects]
 	@productID = #{productID},
 	@userID = #{userID}
 
-	</insert>
+	</select>
 	
-	<delete id="del"  parameterType="entity.StoreCollects">
+	<select id="del"  parameterType="entity.StoreCollects" resultType="int">
 	exec [SP_Store_delCollects]
 	@productID = #{productID},
 	@userID = #{userID}
-	</delete>
+	</select>
 	
 	<select id="checkCollectStatus" parameterType="entity.StoreCollects" resultType="int">
 	exec [SP_Store_checkCollectStatus]

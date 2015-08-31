@@ -24,7 +24,12 @@
 		<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
@@ -64,8 +69,8 @@
 					<input type="submit" value="搜索">
 				</div>
 				<br>
-				<div id="" class="" align="center">
-					<table border>
+				<div id="" class="" align="center"  style="width: 500" >
+					<table class="table table-hover table-bordered"> 
 						<tr>
 							<th>
 								商品名称

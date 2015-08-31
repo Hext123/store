@@ -7,29 +7,38 @@
 
 
 	<select id="addOrderSimple" parameterType="Map" resultType="String">
-EXEC [dbo].[SP_Store_addOrder_simple]
-	@userID = #{o.userID},
-	@orderConsignee = #{o.orderConsignee},
-	@orderAddress = #{o.orderAddress},
-	@orderTelephone = #{o.orderTelephone},
-	@rderSumPrice = #{o.rderSumPrice},
-	@orderDesc = #{o.orderDesc},
-	@pmcID = #{o.pmcID},
-	@productID = #{productID},
-	@buyCount = #{buyCount}
+		EXEC [dbo].[SP_Store_addOrder_simple]
+		@userID = #{o.userID},
+		@orderConsignee = #{o.orderConsignee},
+		@orderAddress = #{o.orderAddress},
+		@orderTelephone = #{o.orderTelephone},
+		@orderFreight = #{o.orderFreight},
+		@rderSumPrice = #{o.orderSumPrice},
+		@orderDesc = #{o.orderDesc},
+		@pmcID = #{o.pmcID},
+		@productID = #{productID},
+		@buyCount = #{buyCount}
 	</select>
-	
-		<select id="addOrder" parameterType="entity.StoreOrders" resultType="String">
 
-EXEC [dbo].[SP_Store_addOrder] 
-	@userID = #{userID},
-	@orderConsignee = #{orderConsignee},
-	@orderAddress = #{orderAddress},
-	@orderTelephone = #{orderTelephone},
-	@rderSumPrice = #{rderSumPrice},
-	@orderDesc = #{orderDesc},
-	@pmcID = #{pmcID}
+	<select id="addOrder" parameterType="entity.StoreOrders"
+		resultType="String">
+
+		EXEC [dbo].[SP_Store_addOrder]
+		@userID = #{userID},
+		@orderConsignee = #{orderConsignee},
+		@orderAddress = #{orderAddress},
+		@orderTelephone = #{orderTelephone},
+		@orderFreight = #{orderFreight},
+		@rderSumPrice = #{orderSumPrice},
+		@orderDesc = #{orderDesc},
+		@pmcID = #{pmcID}
 	</select>
-	
+
+	<select id="updateOrderState" parameterType="entity.StoreOrders"
+		resultType="int">
+		EXEC [dbo].[SP_Store_updateOrderState]
+		@orderID = #{orderID},
+		@orderState = #{orderState}
+	</select>
 
 </mapper>

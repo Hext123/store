@@ -25,6 +25,12 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 		<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+		<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 	i = 1;
 	$(document).ready(function(){
@@ -59,8 +65,9 @@
 					修改商品
 				</div>
 				<br>
-				<div id="" class="">
-					<table border align="center">
+				<div class='col-xs-3'></div>
+				<div id="" class="col-xs-6" >
+					<table class="table table-bordered ">
 						<tr>
 							<td>
 								商品名称：

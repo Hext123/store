@@ -14,4 +14,7 @@ public interface StoreOrdersDao {
 			@Param("buyCount") int buyCount);
 
 	String addOrder(StoreOrders storeOrders);
+
+	int updateOrderState(StoreOrders storeOrders);
+
 }

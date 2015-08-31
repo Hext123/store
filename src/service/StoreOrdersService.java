@@ -8,4 +8,6 @@ public interface StoreOrdersService {
 
 	String addOrder(StoreOrders storeOrders, String[] shopCarID)
 			throws Exception;
+
+	int updateOrderState(StoreOrders storeOrders);
 }
